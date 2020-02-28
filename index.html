@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#d93e37" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="assets/common/css/main.min.css">
+    <script src="assets/lib/fontawesome/font-awesome.js"></script>
+    <title>Admin Dev-Cart</title>
+</head>
+
+<body>
+    <div id="app">
+        <router-view></router-view>
+    </div>
+
+    <div class="loader" id="loader">
+        <svg width="48" height="48" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" version="1.1"><path d="M 150,0 a 150,150 0 0,1 106.066,256.066 l -35.355,-35.355 a -100,-100 0 0,0 -70.711,-170.711 z" fill="#76f19a"><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 150 150" to="360 150 150" begin="0s" dur=".5s" fill="freeze" repeatCount="indefinite"></animateTransform></path></svg>
+    </div>
+
+    <script src="assets/lib/vue/js/vue.js"></script>
+    <script src="assets/lib/vue/js/vue-router.js"></script>
+    <script src="assets/lib/vue/js/vue-resource.min.js"></script>
+    <script src="assets/lib/jquery/js/jquery-3.4.1.min.js"></script>
+    <script src="assets/lib/jquery/js/jscolor.js"></script>
+    <script src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/lib/sweet/js/sweet.min.js"></script>
+    <script src="assets/common/js/config.js"></script>
+    <script src="assets/common/js/global-functions.js"></script>
+    <script type="module" src="assets/common/js/main.js "></script>
+</body>
+
+</html>

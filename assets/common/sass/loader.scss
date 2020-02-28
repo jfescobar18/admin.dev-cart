@@ -1,0 +1,32 @@
+.loader {
+    &.displayed {
+        display: flex;
+    }
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(119, 117, 117, 0.4);
+    background-image: radial-gradient(rgba(136, 136, 136, 0.4), rgba(85, 85, 85, 0.4));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    display: none;
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+    }
+    svg {
+        height: 12em;
+        width: 12em;
+        path {
+            stroke-width: 0px;
+            fill: $MainColor;
+            stroke: none;
+        }
+    }
+}
