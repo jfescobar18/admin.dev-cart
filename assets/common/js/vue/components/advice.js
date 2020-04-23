@@ -1,20 +1,12 @@
 var advice = Vue.component('advice', {
-    props: {
-        Notice_Privacy_Id: {
-            default: 0
-        },
-        Notice_Privacy_Title: {
-            default: ''
-        },
-        Notice_Privacy_Content: {
-            default: ''
-        }
-    },
     components: {
         ckeditor: CKEditor.component
     },
     data() {
         return {
+            Notice_Privacy_Id: 0,
+            Notice_Privacy_Title: '',
+            Notice_Privacy_Content: '',
             editor: ClassicEditor
         };
     },

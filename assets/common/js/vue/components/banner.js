@@ -1,11 +1,9 @@
 var banner = Vue.component('banner', {
-    props: {
-        Banner: {
-            default: [{}]
-        },
-        fileUploadFormData: {
-            default: new FormData()
-        }
+    data() {
+        return {
+            Banner: [{}],
+            fileUploadFormData: new FormData()
+        };
     },
     methods: {
         loadBanner: function () {
@@ -16,12 +14,10 @@ var banner = Vue.component('banner', {
                 }
             }).then(
                 response => {
-                    if (response.body.length > 0) {
-                        this.Banner = response.body.map(function (x) {
-                            x.Offers_Banner_Img = APIUrl() + x.Offers_Banner_Img;
-                            return x
-                        });
-                    }
+                    this.Banner = response.body.map(function (x) {
+                        x.Offers_Banner_Img = APIUrl() + x.Offers_Banner_Img;
+                        return x
+                    });
                     animInputs();
                     hideLoader();
                 },
@@ -88,7 +84,7 @@ var banner = Vue.component('banner', {
                                 <img class="w100" v-bind:src="Banner[0].Offers_Banner_Img" alt="">
                             </div>
                             <div class="form-group col-md-6 col-md-offset-3">
-                                <input required v-on:change="onFileChange(event)" type="file" name="file" id="file" class="input-file" accept="image/x-png,image/jpeg">
+                                <input required v-on:change="onFileChange(this.event)" type="file" name="file" id="file" class="input-file" accept="image/x-png,image/jpeg">
                                 <label for="file" class="btn btn-tertiary js-labelFile">
                                     <i class="icon fa fa-check"></i>
                                     <span class="js-fileName">Selecciona un archivo</span>

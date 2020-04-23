@@ -23,6 +23,12 @@ function formatMoney(amount, decimalCount = 2, decimal = '.', thousands = ',') {
     }
 }
 
+function arrayRemove(arr, value) {
+    return arr.filter(function (ele) {
+        return ele != value;
+    });
+}
+
 function animInputs() {
     $('.input-file').each(function () {
         var $input = $(this),

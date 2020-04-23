@@ -1,20 +1,12 @@
 var aboutus = Vue.component('aboutus', {
-    props: {
-        AboutUsSections: {
-            default: [{}]
-        },
-        About_Us_Section_Title: {
-            default: ''
-        },
-        About_Us_Section_Content: {
-            default: ''
-        }
-    },
     components: {
         ckeditor: CKEditor.component
     },
     data() {
         return {
+            AboutUsSections: [{}],
+            About_Us_Section_Title: '',
+            About_Us_Section_Content: '',
             editor: ClassicEditor
         };
     },

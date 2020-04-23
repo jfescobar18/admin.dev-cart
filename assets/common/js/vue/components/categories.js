@@ -1,14 +1,10 @@
 var categories = Vue.component('categories', {
-    props: {
-        Categories: {
-            default: [{}]
-        },
-        Category_Id: {
-            default: 0
-        },
-        Category_Name: {
-            default: ''
-        }
+    data() {
+        return {
+            Categories: [{}],
+            Category_Id: 0,
+            Category_Name: ''
+        };
     },
     methods: {
         loadCategories: function () {
@@ -131,7 +127,7 @@ var categories = Vue.component('categories', {
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <button type="button" class="close">&times;</button>
+                                <button type="button" class="close" v-on:click="CloseModal">&times;</button>
                                 <h4 class="modal-title">Agregar/Editar Categoría</h4>
                             </div>
                             <div class="modal-body">
@@ -150,7 +146,7 @@ var categories = Vue.component('categories', {
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default">Cerrar</button>
+                                <button type="button" class="btn btn-default" v-on:click="CloseModal">Cerrar</button>
                             </div>
                         </div>
                     </div>

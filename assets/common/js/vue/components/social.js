@@ -1,20 +1,12 @@
 var social = Vue.component('social', {
-    props: {
-        SocialMedias: {
-            default: [{}]
-        },
-        Social_Media_Name: {
-            default: ''
-        },
-        Social_Media_Awesome_Font: {
-            default: ''
-        },
-        Social_Media_Url: {
-            default: ''
-        },
-        Social_Media_Tab: {
-            default: ''
-        }
+    data() {
+        return {
+            SocialMedias: [{}],
+            Social_Media_Name: '',
+            Social_Media_Awesome_Font: '',
+            Social_Media_Url: '',
+            Social_Media_Tab: ''
+        };
     },
     methods: {
         loadSocialMedias: function () {

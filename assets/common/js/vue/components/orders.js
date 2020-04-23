@@ -1,20 +1,12 @@
 const orders = Vue.component('orders', {
-    props: {
-        Orders: {
-            default: [{}]
-        },
-        'Order_Id': {
-            default: ''
-        },
-        'ClientEmail': {
-            default: ''
-        },
-        'TrackingId': {
-            default: ''
-        },
-        'ShippingService': {
-            default: ''
-        },
+    data() {
+        return {
+            Orders: [{}],
+            Order_Id: '',
+            ClientEmail: '',
+            TrackingId: '',
+            ShippingService: ''
+        };
     },
     methods: {
         loadOrders: function () {
@@ -25,8 +17,6 @@ const orders = Vue.component('orders', {
                 }
             }).then(
                 response => {
-                    console.log(response.body);
-                    
                     this.Orders = response.body;
 
                     for (let i = 0; i < this.Orders.length; i++) {
@@ -169,8 +159,8 @@ const orders = Vue.component('orders', {
                                                 <input required type="text" class="form-control" id="shippingService" 
                                                     placeholder="Servicio de paquetería" v-model="ShippingService" list="services">
                                                 <datalist id="services">
-                                                    <option value="FedEx">
-                                                    <option value="Estafeta">
+                                                    <option value="FedEx"></option>
+                                                    <option value="Estafeta"></option>
                                                 </datalist>
                                             </label>
                                     </div>

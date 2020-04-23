@@ -1,14 +1,10 @@
 var config = Vue.component('config', {
-    props: {
-        Configurations: {
-            default: [{}]
-        },
-        Configuration_Key: {
-            default: ''
-        },
-        Configuration_Value: {
-            default: ''
-        }
+    data() {
+        return {
+            Configurations: [{}],
+            Configuration_Key: '',
+            Configuration_Value: ''
+        };
     },
     methods: {
         loadConfigurations: function () {

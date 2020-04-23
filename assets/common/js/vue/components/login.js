@@ -1,10 +1,8 @@
 const login = Vue.component('login', {
-    props: {
-        Admin_Login_Username: {
-            default: ''
-        },
-        Admin_Login_Password: {
-            default: ''
+    data() {
+        return {
+            Admin_Login_Username: '',
+            Admin_Login_Password: ''
         }
     },
     methods: {

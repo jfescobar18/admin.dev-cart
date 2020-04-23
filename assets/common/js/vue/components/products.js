@@ -1,68 +1,28 @@
 const products = Vue.component('products', {
-    props: {
-        Categories: {
-            default: [{}]
-        },
-        Products: {
-            default: [{}]
-        },
-        Product_Galery_Images: {
-            default: [{}]
-        },
-        Product_Id: {
-            default: 0
-        },
-        Product_Name: {
-            default: ''
-        },
-        Product_Price: {
-            default: ''
-        },
-        Product_Disscount: {
-            default: ''
-        },
-        Category_Id: {
-            default: 0
-        },
-        Product_Img: {
-            default: ''
-        },
-        Product_Description: {
-            default: ''
-        },
-        Product_Configurations: {
-            default: {}
-        },
-        Product_Creation_Date: {
-            default: ''
-        },
-        Product_Stock: {
-            default: 0
-        },
-        Product_Released: {
-            default: false
-        },
-        Image_Url: {
-            default: ''
-        },
-        fileUploadFormData: {
-            default: new FormData()
-        },
-        includeColor: {
-            default: false
-        },
-        includeSize: {
-            default: false
-        },
-        Product_Galery_Images_Product_Id: {
-            default: 0
-        },
-        Product_Galery_Image_Order: {
-            default: ''
-        },
-        newGalery: {
-            default: ''
-        }
+    data() {
+        return {
+            Categories: [{}],
+            Products: [{}],
+            Product_Galery_Images: [{}],
+            Product_Id: 0,
+            Product_Name: '',
+            Product_Price: '',
+            Product_Disscount: '',
+            Category_Id: 0,
+            Product_Img: '',
+            Product_Description: '',
+            Product_Configurations: {},
+            Product_Creation_Date: '',
+            Product_Stock: 0,
+            Product_Released: false,
+            Image_Url: '',
+            fileUploadFormData: new FormData(),
+            includeColor: false,
+            includeSize: false,
+            Product_Galery_Images_Product_Id: 0,
+            Product_Galery_Image_Order: '',
+            newGalery: ''
+        };
     },
     methods: {
         initUI: function () {
@@ -422,7 +382,7 @@ const products = Vue.component('products', {
             this.Product_Price = ''
             this.Product_Disscount = '';
             this.Category_Id = '0'
-            fileUploadFormData = new FormData();
+            this.fileUploadFormData = new FormData();
             this.Product_Description = '';
             this.Product_Configurations = {
                 'color': [],
@@ -542,7 +502,7 @@ const products = Vue.component('products', {
                                             <img class="w100" v-bind:src="Image_Url" alt="">
                                         </div>
                                         <div class="form-group col-md-6 col-md-offset-3">
-                                            <input v-on:change="onFileChange(event)" type="file" id="newFile" class="input-file" accept="image/x-png,image/jpeg">
+                                            <input v-on:change="onFileChange(this.event)" type="file" id="newFile" class="input-file" accept="image/x-png,image/jpeg">
                                             <label for="newFile" class="btn btn-tertiary js-labelFile w100">
                                                 <i class="icon fa fa-check"></i>
                                                 <span class="js-fileName">Selecciona un archivo</span>
@@ -579,7 +539,7 @@ const products = Vue.component('products', {
                                                 <label class="form-check-label" for="size">Tamaño/Talla</label>
                                                 <div class="config-collection">
                                                     <div class="config-item" v-for="(size, index) in Product_Configurations.size">
-                                                        <input type="text" class="form-control" v-bind:value="size" v-model="Product_Configurations.size[index]">
+                                                        <input type="text" class="form-control" v-model="Product_Configurations.size[index]">
                                                         <button type="button" class="btn btn-danger btn-xs" v-on:click="deleteSize(index)"><i class="fa fa-trash"></i></button>
                                                     </div>
                                                     <div class="add-item">

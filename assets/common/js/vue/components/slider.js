@@ -1,14 +1,10 @@
 var slider = Vue.component('slider', {
-    props: {
-        Slider: {
-            default: [{}]
-        },
-        fileUploadFormData: {
-            default: new FormData()
-        },
-        newSlider: {
-            default: ''
-        }
+    data() {
+        return {
+            Slider: [{}],
+            fileUploadFormData: new FormData(),
+            newSlider: ''
+        };
     },
     methods: {
         loadSlider: function () {
@@ -23,7 +19,7 @@ var slider = Vue.component('slider', {
                         x.Slider_Image_Img = APIUrl() + x.Slider_Image_Img;
                         return x
                     });
-                    
+
                     setTimeout(() => {
                         animInputs();
                         hideLoader();
@@ -152,7 +148,7 @@ var slider = Vue.component('slider', {
                                 <img class="w100" v-bind:src="slide.Slider_Image_Img" alt="" />
                             </div>
                             <div class="form-group col-md-6 col-md-offset-3">
-                                <input required v-on:change="onFileChange(event, index)" type="file" v-bind:id="'file' + index" class="input-file" accept="image/x-png,image/jpeg">
+                                <input required v-on:change="onFileChange(this.event, index)" type="file" v-bind:id="'file' + index" class="input-file" accept="image/x-png,image/jpeg">
                                 <label v-bind:for="'file' + index" class="btn btn-tertiary js-labelFile">
                                     <i class="icon fa fa-check"></i>
                                     <span class="js-fileName">Selecciona un archivo</span>
@@ -177,7 +173,7 @@ var slider = Vue.component('slider', {
                                     <img class="w100" v-bind:src="newSlider" alt="">
                                 </div>
                                 <div class="form-group col-md-6 col-md-offset-3">
-                                    <input required v-on:change="onFileChange(event)" type="file" id="newFile" class="input-file" accept="image/x-png,image/jpeg">
+                                    <input required v-on:change="onFileChange(this.event)" type="file" id="newFile" class="input-file" accept="image/x-png,image/jpeg">
                                     <label for="newFile" class="btn btn-tertiary js-labelFile w100">
                                         <i class="icon fa fa-check"></i>
                                         <span class="js-fileName">Selecciona un archivo</span>
