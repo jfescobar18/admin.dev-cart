@@ -1,7 +1,9 @@
-import router from './vue/router/routes.js'
-import VueSession from './vue/modules/vue-session.js'
+import router from './vue/router/routes.js';
+import VueSession from './vue/modules/vue-session.js';
 
 Vue.use(VueSession);
+Vue.use(Dropdown);
+Vue.config.devtools = true;
 
 const app = new Vue({
     el: '#app',

@@ -10,6 +10,14 @@ var aboutus = Vue.component('aboutus', {
             default: ''
         }
     },
+    components: {
+        ckeditor: CKEditor.component
+    },
+    data() {
+        return {
+            editor: ClassicEditor
+        };
+    },
     methods: {
         loadAboutUsSections: function () {
             showLoader();
@@ -43,6 +51,7 @@ var aboutus = Vue.component('aboutus', {
                     succes_swal('¡Éxito!', 'Sección agregada correctamente');
                     $('#new-modal').modal('hide');
                     this.loadAboutUsSections();
+                    this.clearState();
                     hideLoader();
                 },
                 err => {
@@ -95,6 +104,10 @@ var aboutus = Vue.component('aboutus', {
                     hideLoader();
                 }
             );
+        },
+        clearState: function () {
+            this.About_Us_Section_Title = '';
+            this.About_Us_Section_Content = '';
         }
     },
     template: `
@@ -115,14 +128,14 @@ var aboutus = Vue.component('aboutus', {
                                 </label>
                             </div>
                             <div class="row form-group">
-                                <label class="col-md-12 control-label">Párrafo
-                                    <textarea v-model="section.About_Us_Section_Content" class="form-control"  cols="30" rows="10" placeholder="Párrafo"></textarea>
-                                    <small>*Puedes usar etiquetas html básicas</small>
-                                </label>
+                                <label class="col-md-12 control-label">Párrafo</label>
+                                <div class="col-md-12">
+                                    <ckeditor :editor="editor" v-model="section.About_Us_Section_Content"></ckeditor>
+                                </div>
                             </div>
                             <div class="row form-group text-center">
                                 <input type="submit" class="btn btn-info" value="Guardar">
-                                <button type="button" class="btn btn-danger">Eliminar</button>
+                                <button type="button" class="btn btn-danger" v-on:click="deleteAboutUsSection(index)">Eliminar</button>
                             </div>
                             <hr>
                         </form>
@@ -151,10 +164,10 @@ var aboutus = Vue.component('aboutus', {
                                         </label>
                                     </div>
                                     <div class="row form-group">
-                                        <label class="col-md-12 control-label">Párrafo
-                                            <textarea class="form-control" cols="30" rows="10" placeholder="Párrafo" v-model="About_Us_Section_Content"></textarea>
-                                            <small>*Puedes usar etiquetas html básicas</small>
-                                        </label>
+                                        <label class="col-md-12 control-label">Párrafo</label>
+                                        <div class="col-md-12">
+                                            <ckeditor :editor="editor" v-model="About_Us_Section_Content"></ckeditor>
+                                        </div>
                                     </div>
                                     <div class="row form-group text-center">
                                         <input type="submit" class="btn btn-info" value="Guardar">

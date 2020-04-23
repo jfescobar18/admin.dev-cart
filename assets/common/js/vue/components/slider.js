@@ -23,8 +23,11 @@ var slider = Vue.component('slider', {
                         x.Slider_Image_Img = APIUrl() + x.Slider_Image_Img;
                         return x
                     });
-                    hideLoader();
-                    animInputs();
+                    
+                    setTimeout(() => {
+                        animInputs();
+                        hideLoader();
+                    }, 500);
                 },
                 err => {
                     console.log(err);
@@ -34,13 +37,19 @@ var slider = Vue.component('slider', {
             );
         },
         onFileChange: function (e, index) {
-            const file = e.target.files[0];
-            this.fileUploadFormData.append('file', file);
-            if (index !== undefined) {
-                this.Slider[index].Slider_Image_Img = URL.createObjectURL(file);
+            if (e.target.files.length === 0) {
+                this.clearUI();
+                this.loadSlider();
             }
             else {
-                this.newSlider = URL.createObjectURL(file);
+                const file = e.target.files[0];
+                this.fileUploadFormData.append('file', file);
+                if (index !== undefined) {
+                    this.Slider[index].Slider_Image_Img = URL.createObjectURL(file);
+                }
+                else {
+                    this.newSlider = URL.createObjectURL(file);
+                }
             }
         },
         addSlide: function () {
@@ -119,6 +128,12 @@ var slider = Vue.component('slider', {
             this.fileUploadFormData = new FormData();
             this.newSlider = '';
             this.Slider = [{}];
+
+            var labelFileElements = document.getElementsByClassName('js-labelFile');
+            for (let labelFile of labelFileElements) {
+                labelFile.className = labelFile.className.replace(/\bhas-file\b/g, "");
+                labelFile.innerHTML = '<i class="icon fa fa-check"></i> <span class="js-fileName">Selecciona un archivo</span>';
+            }
         }
     },
     template: `

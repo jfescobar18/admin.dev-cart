@@ -15,7 +15,10 @@ var navbar = Vue.component('navbar', {
                     <li><router-link to="/banner"><i class="fas fa-tag"></i></router-link></li>
                     <li><router-link to="/categories"><i class="fas fa-list-ul"></i></router-link></li>
                     <li><router-link to="/products"><i class="fas fa-shopping-cart"></i></router-link></li>
+                    <li><router-link to="/coupons"><i class="fas fa-tags"></i></router-link></li>
                     <li><router-link to="/orders"><i class="fas fa-boxes"></i></router-link></li>
+                    <li><router-link to="/social"><i class="fas fa-users"></i></i></router-link></li>
+                    <li><router-link to="/advice"><i class="fas fa-file-alt"></i></router-link></li>
                     <li><router-link to="/config"><i class="fas fa-cog"></i></router-link></li>
                     <li><a href="#" v-on:click="logout"><i class="fas fa-power-off"></i></a></li>
             
@@ -29,7 +32,10 @@ var navbar = Vue.component('navbar', {
                     <li><router-link to="/banner">Banner Ofertas</router-link></li>
                     <li><router-link to="/categories">Categorías</router-link></li>
                     <li><router-link to="/products">Productos</router-link></li>
+                    <li><router-link to="/coupons">Cupones</router-link></li>
                     <li><router-link to="/orders">Órdenes</router-link></li>
+                    <li><router-link to="/social">Redes Sociales</router-link></li>
+                    <li><router-link to="/advice">Aviso de Privacidad</router-link></li>
                     <li><router-link to="/config">Configuración</router-link></li>
                     <li><a href="#" v-on:click="logout">Salir</a></li>
                 </ul>

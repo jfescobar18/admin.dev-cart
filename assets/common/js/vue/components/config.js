@@ -42,6 +42,7 @@ var config = Vue.component('config', {
                 response => {
                     succes_swal('¡Éxito!', 'Sección agregada correctamente');
                     $('#new-modal').modal('hide');
+                    this.clearProps();
                     this.loadConfigurations();
                     hideLoader();
                 },
@@ -95,6 +96,10 @@ var config = Vue.component('config', {
                     hideLoader();
                 }
             );
+        },
+        clearProps: function () {
+            this.Configuration_Key = '';
+            this.Configuration_Value = '';
         }
     },
     template: `
@@ -107,24 +112,33 @@ var config = Vue.component('config', {
                 </div>
 
                 <div class="container" v-for="(configuration, index) in Configurations">
-                    <div class="col-md-6 col-md-offset-3">
+                    <div class="col-md-12">
                         <form v-on:submit.prevent="editConfiguration(index)">
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-4 form-group">
                                 <label class="col-md-12 control-label">Key
                                     <input type="text" class="form-control" v-model="configuration.Configuration_Key" placeholder="Header" readonly>
                                 </label>
                             </div>
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-4 form-group">
                                 <label class="col-md-12 control-label">Value
                                     <input type="text" class="form-control" v-model="configuration.Configuration_Value" placeholder="Value">
                                 </label>
                             </div>
-                            <div class="row form-group text-center">
-                                <input type="submit" class="btn btn-info" value="Guardar">
-                                <button type="button" class="btn btn-danger">Eliminar</button>
+                            <div class="col-md-4 form-group">
+                                <label class="col-md-12 control-label">
+                                    <br />
+                                    <div class="col-md-6">
+                                        <input type="submit" class="btn btn-info form-control" value="Guardar">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="button" class="btn btn-danger form-control">Eliminar</button>
+                                    </div>
+                                </label>
                             </div>
-                            <hr>
                         </form>
+                        <div class="col-md-12">
+                            <hr />
+                        </div>
                     </div>
                 </div>
 

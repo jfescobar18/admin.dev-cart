@@ -44,12 +44,12 @@ const login = Vue.component('login', {
                 <form v-on:submit.prevent="requestlogin">
                     <div class="row form-group">
                         <label class="col-md-12 control-label">Email
-                            <input type="email" class="form-control" placeholder="Email" v-model="Admin_Login_Username">
+                            <input type="email" class="form-control" placeholder="Email" required autocomplete="on" v-model="Admin_Login_Username">
                         </label>
                     </div>
                     <div class="row form-group">
                         <label class="col-md-12 control-label">Password
-                            <input type="password" class="form-control"  placeholder="Password" v-model="Admin_Login_Password">
+                            <input type="password" class="form-control" placeholder="Password" required autocomplete="on" v-model="Admin_Login_Password">
                         </label>
                     </div>
                     <div class="row form-group text-center">

@@ -33,9 +33,15 @@ var banner = Vue.component('banner', {
             );
         },
         onFileChange: function (e) {
-            const file = e.target.files[0];
-            this.fileUploadFormData.append('file', file);
-            this.Banner[0].Offers_Banner_Img = URL.createObjectURL(file);
+            if (e.target.files.length === 0) {
+                this.defaultState();
+                this.loadBanner();
+            }
+            else {
+                const file = e.target.files[0];
+                this.fileUploadFormData.append('file', file);
+                this.Banner[0].Offers_Banner_Img = URL.createObjectURL(file);
+            }
         },
         editBanner: function () {
             showLoader();
@@ -47,16 +53,23 @@ var banner = Vue.component('banner', {
                 response => {
                     succes_swal('¡Éxito!', 'Banner actualizado correctamente');
                     this.loadBanner();
+                    this.defaultState();
                     hideLoader();
-                    this.fileUploadFormData = new FormData();
                 },
                 err => {
                     console.log(err);
                     error_swal('Error...', 'Error interno estamos trabajando para solucionarlo');
+                    this.defaultState();
                     hideLoader();
-                    this.fileUploadFormData = new FormData();
                 }
             );
+        },
+        defaultState: function () {
+            this.fileUploadFormData = new FormData();
+
+            var labelFile = document.querySelector('.js-labelFile');
+            labelFile.className = labelFile.className.replace(/\bhas-file\b/g, "");
+            labelFile.innerHTML = '<i class="icon fa fa-check"></i> <span class="js-fileName">Selecciona un archivo</span>';
         }
     },
     template: `

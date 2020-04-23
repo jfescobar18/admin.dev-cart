@@ -6,7 +6,10 @@ import aboutus from '../components/aboutus.js'
 import banner from '../components/banner.js'
 import categories from '../components/categories.js'
 import products from '../components/products.js'
+import coupons from '../components/coupons.js'
 import orders from '../components/orders.js'
+import social from '../components/social.js'
+import advice from '../components/advice.js'
 import config from '../components/config.js'
 
 const routes = [
@@ -46,9 +49,24 @@ const routes = [
         component: products
     },
     {
+        path: '/coupons',
+        name: 'coupons',
+        component: coupons
+    },
+    {
         path: '/orders',
         name: 'orders',
         component: orders
+    },
+    {
+        path: '/social',
+        name: 'social',
+        component: social
+    },
+    {
+        path: '/advice',
+        name: 'advice',
+        component: advice
     },
     {
         path: '/config',

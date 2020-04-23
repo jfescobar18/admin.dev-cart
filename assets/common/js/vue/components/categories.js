@@ -35,8 +35,6 @@ var categories = Vue.component('categories', {
             this.Category_Name = this.Categories[index].Category_Name;
         },
         addCategory: function () {
-            console.log(this.Category_Id);
-            
             showLoader();
             var Method = this.Category_Id === 0 ? 'AddCategory' : 'UpdateCategory';
 
