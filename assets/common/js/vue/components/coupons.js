@@ -48,6 +48,32 @@ var coupons = Vue.component('coupons', {
                 }
             );
         },
+        addCoupon: function () {
+            showLoader();
+            this.$http.post(APIUrl() + 'AdminCoupon/AddCoupon', {
+                Coupon_Code: this.Coupon_Code,
+                Coupon_Amount: this.Coupon_Amount,
+                Coupon_Discount: this.Coupon_Discount,
+                Coupon_Creation_Date: this.Coupon_Creation_Date,
+                Coupon_Expiration_Date: this.Coupon_Expiration_Date,
+                Specific_Rule_Json_Config: JSON.stringify(this.Specific_Rule_Json_Config)
+            }, {
+                headers: {
+                    APIKey: window.config.APIKey
+                }
+            }).then(
+                response => {
+                    succes_swal('¡Éxito!', 'Cupón guardado correctamente');
+                    this.loadCoupons();
+                    hideLoader();
+                },
+                err => {
+                    console.log(err);
+                    error_swal('Error...', 'Error interno estamos trabajando para solucionarlo');
+                    hideLoader();
+                }
+            );
+        },
         loadRules: function () {
             showLoader();
             this.$http.get(APIUrl() + 'AdminCoupon/GetCouponRules', {
@@ -248,7 +274,7 @@ var coupons = Vue.component('coupons', {
                             </div>
                             <div class="modal-body">
 
-                                <form>
+                                <form v-on:submit.prevent="addCoupon">
                                     <input type="number" hidden>
                                     <div class="row form-group">
                                         <label for="code" class="col-md-10 control-label">Código
